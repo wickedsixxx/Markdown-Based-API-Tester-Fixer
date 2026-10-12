@@ -1,0 +1,12 @@
+Status: 201
+{
+  "connection": "keep-alive",
+  "content-length": "24",
+  "content-type": "application/json; charset=utf-8",
+  "date": "Mon, 12 Oct 2026 10:10:44 GMT",
+  "etag": "W/\"18-1H6Jfp0uk/Fzg5J+e3NdUNOcBUY\"",
+  "keep-alive": "timeout=5",
+  "x-powered-by": "Express"
+}
+
+{"id":3,"name":"cherry"}

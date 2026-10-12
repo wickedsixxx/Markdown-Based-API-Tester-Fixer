@@ -1,0 +1,11 @@
+Status: 201
+{
+  "connection": "keep-alive",
+  "content-length": "24",
+  "content-type": "application/json; charset=utf-8",
+  "date": "Mon, 12 Oct 2026 10:11:04 GMT",
+  "etag": "W/\"18-1erZyCD3DX6TYBR3T1+8DaU2ULY\"",
+  "keep-alive": "timeout=5"
+}
+
+{"id":2,"name":"banana"}

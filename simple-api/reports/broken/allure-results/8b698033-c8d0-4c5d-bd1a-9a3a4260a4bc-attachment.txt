@@ -1,0 +1,22 @@
+Status: 400
+{
+  "connection": "keep-alive",
+  "content-length": "1169",
+  "content-security-policy": "default-src 'none'",
+  "content-type": "text/html; charset=utf-8",
+  "date": "Mon, 12 Oct 2026 10:10:44 GMT",
+  "keep-alive": "timeout=5",
+  "x-content-type-options": "nosniff",
+  "x-powered-by": "Express"
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>SyntaxError: Unexpected end of JSON input<br> &nbsp; &nbsp;at JSON.parse (&lt;anonymous&gt;)<br> &nbsp; &nbsp;at parse (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\body-parser\lib\types\json.js:91:21)<br> &nbsp; &nbsp;at C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\body-parser\lib\read.js:162:18<br> &nbsp; &nbsp;at AsyncResource.runInAsyncScope (node:async_hooks:214:14)<br> &nbsp; &nbsp;at invokeCallback (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\raw-body\index.js:238:16)<br> &nbsp; &nbsp;at done (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\raw-body\index.js:227:7)<br> &nbsp; &nbsp;at IncomingMessage.onEnd (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\raw-body\index.js:287:7)<br> &nbsp; &nbsp;at IncomingMessage.emit (node:events:508:28)<br> &nbsp; &nbsp;at endReadableNT (node:internal/streams/readable:1701:12)<br> &nbsp; &nbsp;at process.processTicksAndRejections (node:internal/process/task_queues:89:21)</pre>
+</body>
+</html>

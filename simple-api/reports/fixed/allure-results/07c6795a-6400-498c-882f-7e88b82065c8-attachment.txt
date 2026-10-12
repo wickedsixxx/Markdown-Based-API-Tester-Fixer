@@ -1,0 +1,11 @@
+Status: 400
+{
+  "connection": "keep-alive",
+  "content-length": "58",
+  "content-type": "application/json; charset=utf-8",
+  "date": "Mon, 12 Oct 2026 10:11:04 GMT",
+  "etag": "W/\"3a-AycM5owe3nMR6xtEBqEKZdUHW5U\"",
+  "keep-alive": "timeout=5"
+}
+
+{"error":"Field \"name\" must not exceed 100 characters."}

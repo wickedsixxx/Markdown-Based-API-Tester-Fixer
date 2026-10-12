@@ -1,0 +1,12 @@
+Status: 201
+{
+  "connection": "keep-alive",
+  "content-length": "23",
+  "content-type": "application/json; charset=utf-8",
+  "date": "Mon, 12 Oct 2026 10:10:44 GMT",
+  "etag": "W/\"17-vgTOkH2TEK1FOkiH+g6k0RvHQY8\"",
+  "keep-alive": "timeout=5",
+  "x-powered-by": "Express"
+}
+
+{"id":1,"name":"apple"}

@@ -1,0 +1,150 @@
+# Run the requests in order against a freshly started server (npm start).
+# The expected ids depend on the order of the valid POST requests.
+
+### TC01 | List is empty before any item is created
+# Expected status: 200 | Response body is an empty array
+GET http://localhost:3000/items
+
+### TC02 | Create an item with a valid name
+# Expected status: 201 | Response body is {"id":1,"name":"apple"}
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"apple"}
+
+### TC03 | Created item is returned by the list
+# Expected status: 200 | Response body is [{"id":1,"name":"apple"}]
+GET http://localhost:3000/items
+
+### TC04 | Second item receives an incremented id
+# Expected status: 201 | Response body is {"id":2,"name":"banana"}
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"banana"}
+
+### TC05 | Surrounding whitespace is trimmed from the name
+# Expected status: 201 | Response body is {"id":3,"name":"cherry"}
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"  cherry  "}
+
+### TC06 | Client supplied id and extra fields are ignored
+# Expected status: 201 | Response body is {"id":4,"name":"date"} without the extra fields
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"date","id":99,"role":"admin"}
+
+### TC07 | Unicode name is accepted
+# Expected status: 201 | Response body is {"id":5,"name":"çilek 🍓"}
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"çilek 🍓"}
+
+### TC08 | Missing name field is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{}
+
+### TC09 | Empty string name is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":""}
+
+### TC10 | Whitespace only name is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"   "}
+
+### TC11 | Numeric name is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":123}
+
+### TC12 | Null name is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":null}
+
+### TC13 | Array body is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+[{"name":"apple"}]
+
+### TC14 | Empty request body is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+### TC15 | Plain text content type is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: text/plain
+
+{"name":"apple"}
+
+### TC16 | Malformed JSON is rejected with status 400
+# Expected status: 400 | Status code is 400
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":
+
+### TC17 | Malformed JSON error is returned as JSON
+# Expected status: 400 | Content type is application/json and body contains an error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":
+
+### TC18 | Rejected requests did not modify the stored items
+# Expected status: 200 | List contains exactly the five items created by valid requests
+GET http://localhost:3000/items
+
+### TC19 | Payload above the size limit is rejected
+# Expected status: 413 | Status code is 413
+POST http://localhost:3000/items
+Content-Type: application/json
+
+# Body: JSON body {"name":"<204800 times the letter a>"}
+
+### TC20 | Name longer than 100 characters is rejected
+# Expected status: 400 | Response contains a JSON error message
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+
+### TC21 | Server technology header is not exposed
+# Expected status: 200 | Response has no X-Powered-By header
+GET http://localhost:3000/items
+
+### TC22 | Unknown route returns 404
+# Expected status: 404 | Status code is 404
+GET http://localhost:3000/unknown
+
+### TC23 | Unsupported PUT method returns 404
+# Expected status: 404 | Status code is 404
+PUT http://localhost:3000/items
+Content-Type: application/json
+
+{"name":"apple"}
+
+### TC24 | Unsupported DELETE method returns 404
+# Expected status: 404 | Status code is 404
+DELETE http://localhost:3000/items

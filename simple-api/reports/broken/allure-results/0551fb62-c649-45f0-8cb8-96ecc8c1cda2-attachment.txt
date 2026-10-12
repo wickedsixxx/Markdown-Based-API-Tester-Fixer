@@ -1,0 +1,22 @@
+Status: 413
+{
+  "connection": "keep-alive",
+  "content-length": "1437",
+  "content-security-policy": "default-src 'none'",
+  "content-type": "text/html; charset=utf-8",
+  "date": "Mon, 12 Oct 2026 10:10:44 GMT",
+  "keep-alive": "timeout=5",
+  "x-content-type-options": "nosniff",
+  "x-powered-by": "Express"
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>PayloadTooLargeError: request entity too large<br> &nbsp; &nbsp;at readStream (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\raw-body\index.js:163:17)<br> &nbsp; &nbsp;at getRawBody (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\raw-body\index.js:116:12)<br> &nbsp; &nbsp;at read (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\body-parser\lib\read.js:113:3)<br> &nbsp; &nbsp;at jsonParser (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\body-parser\lib\types\json.js:60:5)<br> &nbsp; &nbsp;at Layer.handleRequest (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\router\lib\layer.js:152:17)<br> &nbsp; &nbsp;at trimPrefix (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\router\index.js:342:13)<br> &nbsp; &nbsp;at C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\router\index.js:297:9<br> &nbsp; &nbsp;at processParams (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\router\index.js:582:12)<br> &nbsp; &nbsp;at next (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\router\index.js:291:5)<br> &nbsp; &nbsp;at router.handle (C:\Dev\github\wickedsixxx\AIDLC simpleTester\simple-api\node_modules\router\index.js:186:3)</pre>
+</body>
+</html>
